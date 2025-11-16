@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HealthyChange — Habit Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div>
+        <h1>HealthyChange</h1>
+        <p class="tag">Small steps • Big change — track habits & improve</p>
+      </div>
+      <div class="top-actions">
+        <button id="addDemoBtn" class="ghost">Add demo habits</button>
+      </div>
+    </header>
+
+    <main class="grid">
+
+      <!-- Left Column: Manage Habits -->
+      <section class="card manage">
+        <h2>Manage Habits</h2>
+
+        <div class="row">
+          <select id="presetSelect" aria-label="Choose preset">
+            <option value="">— Select preset habit —</option>
+            <option value="Drink 8 glasses of water">Drink 8 glasses of water</option>
+            <option value="Eat one fruit daily">Eat one fruit daily</option>
+            <option value="Avoid junk food">Avoid junk food</option>
+            <option value="Eat leafy vegetables">Eat leafy vegetables</option>
+            <option value="Walk 20 minutes">Walk 20 minutes</option>
+            <option value="Reduce sugar intake">Reduce sugar intake</option>
+            <option value="Eat homemade food">Eat homemade food</option>
+          </select>
+          <button id="addPresetBtn" class="btn">Add</button>
+        </div>
+
+        <div class="row or">
+          <span>OR</span>
+        </div>
+
+        <input id="newHabitInput" placeholder="Type custom habit (e.g., 'No fried foods')"/>
+        <div class="row">
+          <button id="addCustomBtn" class="btn">Add Custom Habit</button>
+          <button id="clearAllBtn" class="btn muted">Clear All</button>
+        </div>
+
+        <h3>Your Habits</h3>
+        <ul id="habitList" class="habit-list"></ul>
+      </section>
+
+      <!-- Middle Column: Daily tracking & calendar -->
+      <section class="card tracker">
+        <h2>Track Today</h2>
+
+        <div class="row">
+          <label for="activeHabitSelect">Active habit:</label>
+          <select id="activeHabitSelect"></select>
+        </div>
+
+        <div class="row biggap">
+          <button id="markDone" class="btn success">Mark Today — Done</button>
+          <button id="markNotDone" class="btn danger">Mark Today — Not Done</button>
+        </div>
+
+        <div class="row small">
+          <label for="note">Note (optional):</label>
+          <input id="note" placeholder="e.g., Ate banana mid-day" />
+        </div>
+
+        <div class="divider"></div>
+
+        <h3>Calendar (last 30 days)</h3>
+        <div id="calendar" class="calendar"></div>
+        <p class="hint">Green = done • Gray = not done • Empty = no entry</p>
+
+      </section>
+
+      <!-- Right Column: Dashboard -->
+      <section class="card dashboard">
+        <h2>Dashboard</h2>
+
+        <div class="stat-row">
+          <div class="stat">
+            <div id="daysLogged" class="stat-num">0</div>
+            <div class="stat-label">Days Logged</div>
+          </div>
+          <div class="stat">
+            <div id="daysDone" class="stat-num">0</div>
+            <div class="stat-label">Days Done</div>
+          </div>
+          <div class="stat">
+            <div id="streak" class="stat-num">0</div>
+            <div class="stat-label">Current Streak</div>
+          </div>
+          <div class="stat">
+            <div id="successRate" class="stat-num">0%</div>
+            <div class="stat-label">Success Rate</div>
+          </div>
+        </div>
+
+        <canvas id="pieChart" width="200" height="200"></canvas>
+        <div class="row small">
+          <button id="exportCsvBtn" class="btn">Export CSV</button>
+          <button id="backupBtn" class="btn muted">Backup JSON</button>
+        </div>
+
+        <div class="divider"></div>
+
+        <h3>Reminder</h3>
+        <div class="row small">
+          <input id="reminderTime" type="time" />
+          <button id="setReminderBtn" class="btn">Set Reminder</button>
+        </div>
+        <p class="hint">You will receive a browser notification when the page is open (permission required).</p>
+      </section>
+
+      <!-- Full width: Log history -->
+      <section class="card full">
+        <h2>Log History (Most recent first)</h2>
+        <div id="logHistory" class="history"></div>
+      </section>
+
+    </main>
+
+    <footer class="foot">
+      <small>Made for CSP — Dondapudi • HealthyChange (offline, localStorage)</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
